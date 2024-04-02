@@ -1,0 +1,17 @@
+.form {
+  margin-bottom: 15px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.text {
+  color: rgb(12, 12, 119);
+  font-size: 28px;
+  display: block;
+}
+
+.input {
+  width: 250px;
+  height: 30px;
+  margin-bottom: 15px;
+}
