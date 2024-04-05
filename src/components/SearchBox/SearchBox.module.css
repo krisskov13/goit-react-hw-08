@@ -1,5 +1,10 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 260px;
+  width: 350px;
+}
+
+.text {
+  font-size: 20px;
+  margin: 0 0 7px 50px;
 }

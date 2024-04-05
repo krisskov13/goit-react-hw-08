@@ -6,7 +6,7 @@ export default function SearchBox() {
   return (
     <Formik>
       <Form className={css.form}>
-        <label>Find contacts by name</label>
+        <p className={css.text}>Find contacts by name or number</p>
         <SearchBar />
       </Form>
     </Formik>

@@ -1,4 +1,14 @@
 .input {
-  height: 20px;
-  margin-left: 5px;
+  width: 85%;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+.input:hover,
+.input:focus {
+  border: solid 1px black;
 }
