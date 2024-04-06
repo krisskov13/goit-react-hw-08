@@ -18,7 +18,12 @@ export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("User refreshed successfully");
+    }
+  }, [isSuccess]);
 
   useEffect(() => {
     dispatch(refreshUser())
@@ -26,18 +31,8 @@ export default function App() {
       .then(() => {
         setIsSuccess(true);
       })
-      .catch(() => {
-        setIsError(true);
-      });
+      .catch();
   }, [dispatch]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success("'User refreshed successfully");
-    } else if (isError) {
-      toast.error("Error refreshing user");
-    }
-  }, [isSuccess, isError]);
 
   return (
     <Layout>
