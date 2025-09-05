@@ -20,7 +20,7 @@ const contactsSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchContacts.pending, (state) => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -29,24 +29,22 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.payload;
       })
       .addCase(deleteContact.pending, (state) => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = state.items.filter(
-          (item) => item.id !== action.payload.id
-        );
+        state.items = state.items.filter((item) => item.id !== action.payload);
       })
-      .addCase(deleteContact.rejected, (state) => {
+      .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.payload;
       })
       .addCase(addContact.pending, (state) => {
-        state.error = false;
+        state.error = null;
         state.loading = true;
       })
       .addCase(addContact.fulfilled, (state, action) => {
@@ -55,12 +53,12 @@ const contactsSlice = createSlice({
       })
       .addCase(addContact.rejected, (state) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.payload;
       })
       .addCase(logout.fulfilled, (state) => {
         state.items = [];
         state.error = null;
-        state.isLoading = false;
+        state.loading = false;
       })
       .addCase(editContact.fulfilled, (state, action) => {
         state.items = state.items.map((item) =>
@@ -74,10 +72,15 @@ export const contactsReducer = contactsSlice.reducer;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter, selectNumberFilter],
   (contacts, nameFilter, numberFilter) => {
-    return contacts.filter(
-      (contact) =>
-        contact.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
-        contact.number.includes(numberFilter)
-    );
+    return contacts.filter((contact) => {
+      const matchesName = contact.name
+        .toLowerCase()
+        .includes(nameFilter.toLowerCase());
+
+      const matchesNumber =
+        numberFilter.trim() !== "" && contact.number.includes(numberFilter);
+
+      return matchesName || matchesNumber;
+    });
   }
 );
