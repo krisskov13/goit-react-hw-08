@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: baseline;
   width: 385px;
-  padding: 10px;
-  border: 1px solid #133eb4;
-  margin-bottom: 10px;
+  padding: 13px 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 17px;
   background-color: white;
 }
 
@@ -13,22 +14,20 @@
   font-size: 18px;
 }
 
-.btn {
-  padding: 5px 14px;
-  margin-left: 10px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
 .button {
-  padding: 5px 14px;
+  font-size: 14px;
+  padding: 7px 14px;
   margin-left: 10px;
   cursor: pointer;
-  background-color: #d4dfee;
+  background-color: rgba(222, 155, 161, 0.3);
   color: black;
+}
+
+.btn {
+  font-size: 14px;
+  padding: 7px 11px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: rgb(0, 123, 255);
+  color: white;
 }

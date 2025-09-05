@@ -15,6 +15,7 @@ const styles = {
   },
   container: {
     display: "flex",
+    alignItems: "baseline",
   },
   contacts: {
     display: "flex",
